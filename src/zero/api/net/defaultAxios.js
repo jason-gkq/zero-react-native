@@ -209,8 +209,8 @@ const responseHandler = (resp) => {
 // 网络异常拦截器
 const responseErrorHandler = (resp) => {
   const { status } = (resp && resp.response) || {};
+  let msg;
   if (status) {
-    let msg;
     switch (status) {
       case 400:
         msg = '错误请求';

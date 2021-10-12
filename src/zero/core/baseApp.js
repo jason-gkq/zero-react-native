@@ -10,7 +10,7 @@ import appModel from '../../app.model';
 import AppPage from '../components/layout';
 import { navigate } from '../api';
 
-import { Navigation } from 'react-native-navigation';
+import { Navigation, topBar } from 'react-native-navigation';
 
 export default ({ BasePageComponent, config }) => {
   class App extends React.Component {
@@ -108,32 +108,33 @@ export default ({ BasePageComponent, config }) => {
     Navigation.registerComponent(config.pageId, () => App);
   }
 
-  // Navigation.setDefaultOptions({
-  //   statusBar: {
-  //     visible: false,
-  //     // backgroundColor: '#4d089a'
-  //   },
-  //   topBar: { visible: false },
-  //   // bottomTab: {
-  //   //   fontSize: 14,
-  //   //   selectedFontSize: 14
-  //   // }
-  // });
-  // Navigation.events().registerAppLaunchedListener(() => {
-  //   Navigation.setRoot({
-  //     root: {
-  //       stack: {
-  //         children: [
-  //           {
-  //             component: {
-  //               name: 'AwesomeProject',
-  //             },
-  //           },
-  //         ],
-  //       },
-  //     },
-  //   });
-  // });
+  let flag = true;
+  if (flag) {
+    Navigation.setDefaultOptions({
+      topBar: { visible: false },
+    });
+    flag = false;
+    console.log('cccccčćddē');
+    Navigation.events().registerAppLaunchedListener(() => {
+      Navigation.setRoot({
+        root: {
+          stack: {
+            children: [
+              {
+                component: {
+                  name: 'AwesomeProject',
+                },
+              },
+            ],
+          },
+        },
+        topBar: {
+          visible: false,
+        },
+      });
+    });
+  }
+
   // Navigation.mergeOptions('Component1', {
   //   topBar: {
   //     visible: false,

@@ -9,5 +9,5 @@
 //   instance,
 // } from "./net/defaultAxios";
 
-import navigate from './navigate/configureNavigate';
-export { navigate };
+// import navigate from './navigate/configureNavigate';
+export { default as navigate } from './navigate/configureNavigate';
